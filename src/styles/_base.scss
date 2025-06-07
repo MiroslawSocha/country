@@ -1,0 +1,50 @@
+@use './reset';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  bold: 700
+);
+
+
+$primary: #3d89e9;
+$primaryHover: #1f7aed;
+$black: #15181f;
+$white: #dbffff;
+$gray: #f6f7f9;
+$blackLight: #898b8e;
+
+$font-familly: 'Poppins', sans-serif;
+
+$max-width: 1040px;
+:root{
+  font-size: 8px;
+  font-weight: weight(regular);
+  font-family: $font-familly;
+}
+
+.container{
+  min-width: $max-width;
+  margin: auto;
+}
+
+h2{
+  font-size: 3rem;
+  font-family: $font-familly;
+  font-weight: weight(regular);
+}
+
+.MuiInputBase-input{
+  font-family: $font-familly !important;
+  color: $black !important;
+  font-size: 2rem !important;
+}
+
+
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+

@@ -1,0 +1,46 @@
+@import '../../styles/base';
+
+.appbar{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    &__content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__content-left{
+        img{
+            min-width: 150px;
+            height: auto;
+            width: auto;
+        }
+    }
+    &__content-right{
+        display: flex;
+        align-items: center;
+        svg{
+            font-size: 5rem;
+            color: $black;
+        }
+        
+    }
+    &__content-cart{
+        display: flex;
+        align-items: center;
+        margin-right: 5rem;
+    }
+    &__content-cart-counter{
+        min-width: 36px;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        background-color: $primary;
+        color: $white;
+        border-radius: 50%;
+        margin-left: 2.5rem;
+    }
+}
