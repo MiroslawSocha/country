@@ -8,20 +8,20 @@ export type CountryReducerState = {
     error: string,
 };
 
-export type FetchAllCountriesAction = {
+export type FetchAllCountriesRequestAction = {
     type: typeof FETCH_COUNTRIES_REQUEST,
     payload?: string,
 };
-export type fetchAllCountriesSucces = {
+export type fetchAllCountriesSuccesAction = {
     type: typeof FETCH_COUNTRIES_SUCCESS,
     payload: [],
 };
-export type fetchAllCountriesFailure = {
+export type fetchAllCountriesFailureAction = {
     type: typeof FETCH_COUNTRIES_FAILURE,
     payload: string,
 };
 
 export type CountryActions = 
-    | FetchAllCountriesAction
-    | fetchAllCountriesSucces
-    | fetchAllCountriesFailure;
+    | FetchAllCountriesRequestAction
+    | fetchAllCountriesSuccesAction
+    | fetchAllCountriesFailureAction;

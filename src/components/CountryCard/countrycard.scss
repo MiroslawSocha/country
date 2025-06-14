@@ -1,0 +1,30 @@
+@import "../../styles/base";
+
+.country-card {
+    box-shadow: $boxShadow;
+    max-width: 300px;
+    &__wrapper {
+        padding: 5rem;
+
+        img {
+            min-width: 250px;
+            max-height: 150px;
+        }
+    }
+
+    &__name {
+        margin-top: 5rem;
+        color: $black;
+    }
+
+    &__region {
+        margin-top: 2.5rem;
+        margin-bottom: 6.5rem;
+        color: $blackLight;
+    }
+
+    &__action {
+        width: 100%;
+        margin-bottom: 2.5rem;
+    }
+}

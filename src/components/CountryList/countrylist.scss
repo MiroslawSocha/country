@@ -1,0 +1,11 @@
+@import "../../styles/base";
+
+.country-list {
+    // max-width: $max-width;
+    margin: 5rem auto 0 auto;
+
+    &__cards {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}

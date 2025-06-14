@@ -1,6 +1,6 @@
-@use './reset';
+@use "./reset";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 $font-weights: (
   regular: 400,
@@ -8,43 +8,63 @@ $font-weights: (
   bold: 700
 );
 
-
 $primary: #3d89e9;
 $primaryHover: #1f7aed;
 $black: #15181f;
+$mainWhite: #ffffff;
 $white: #dbffff;
 $gray: #f6f7f9;
 $blackLight: #898b8e;
+$boxShadow: 0px 6px 16px rgba(165, 155, 151, 0.19);
 
-$font-familly: 'Poppins', sans-serif;
+$font-family: "Poppins", sans-serif;
 
 $max-width: 1040px;
-:root{
+:root {
   font-size: 8px;
   font-weight: weight(regular);
-  font-family: $font-familly;
+  font-family: $font-family;
 }
 
-.container{
+.container {
   min-width: $max-width;
   margin: auto;
 }
 
-h2{
+h2 {
   font-size: 3rem;
-  font-family: $font-familly;
+  font-family: $font-family;
   font-weight: weight(regular);
 }
 
-.MuiInputBase-input{
-  font-family: $font-familly !important;
+.btn {
+  font-size: 2.5rem !important;
+  font-weight: weight(medium) !important;
+  font-family: $font-family !important;
+  border-radius: 8px !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.2s;
+  width: 100%;
+  &__primary {
+    background-color: $primary !important;
+    color: $white !important;
+    &:hover {
+      background-color: $primaryHover !important;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.MuiInputBase-input {
+  font-family: $font-family !important;
   color: $black !important;
   font-size: 2rem !important;
 }
 
-
 @function weight($weight-name) {
   @return map-get($font-weights, $weight-name);
 }
-
-
