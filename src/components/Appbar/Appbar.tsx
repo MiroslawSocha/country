@@ -1,9 +1,15 @@
-import "./appbar.scss";
-
 import Search from "../Search/Search";
+import CartMenu from "../CartMenu/CartMenu";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
+
+import { useSelector } from "react-redux";
+
+import { AppState } from "../../types";
+
+import "./appbar.scss";
+import { useState } from "react";
 
 interface AppbarProps {
   onClick: Function;
@@ -12,8 +18,20 @@ interface AppbarProps {
 
 const Appbar = (props: AppbarProps) => {
   const { onClick, drawerState } = props;
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const menuOpen = Boolean(anchorEl);
+  const cart = useSelector((state: AppState) => state.cartReducer.cart);
+
   const onDrawerClick = () => {
     onClick(!drawerState);
+  };
+
+  const handleCartMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCartMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -30,8 +48,19 @@ const Appbar = (props: AppbarProps) => {
         </div>
         <div className="appbar__content-right">
           <div className="appbar__content-cart">
-            <ShoppingCartIcon />
-            <div className="appbar__content-cart-counter">10</div>
+            <ShoppingCartIcon className="cursor-pointer" />
+            <div
+              className="appbar__content-cart-counter"
+              onClick={handleCartMenuClick}
+            >
+              {cart && cart.length}
+            </div>
+            <CartMenu
+              cart={cart}
+              onClick={handleCartMenuClose}
+              menuOpen={menuOpen}
+              anchorEl={anchorEl}
+            />
           </div>
           <MenuIcon className="cursor-pointer" onClick={onDrawerClick} />
         </div>

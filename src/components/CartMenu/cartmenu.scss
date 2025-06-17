@@ -1,0 +1,46 @@
+@import "../../styles/base";
+
+.cart-menu {
+    &__menu {
+        .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+            width: 500px;
+            padding: 5rem;
+            position: absolute !important;
+            top: 60px !important;
+            h2 {
+                color: $blackLight;
+            }
+        }
+    }
+    &__menu-items {
+        margin-top: 8rem;
+    }
+
+    &__menu-item {
+        display: flex;
+        align-items: center;
+        padding-bottom: 3rem;
+        justify-content: space-between;
+        border-bottom: 1px solid $blackLight;
+        margin-top: 2.5rem;
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        img {
+            flex: 1;
+            width: 100px !important;
+            margin-right: 2rem;
+        }
+        h2 {
+            color: $blackLight;
+            flex: 2;
+        }
+        .cart-menu__delete-icon {
+            flex: 1;
+            font-size: 4rem;
+            color: $blackLight;
+            cursor: pointer;
+        }
+    }
+}
