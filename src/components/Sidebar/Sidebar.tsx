@@ -15,6 +15,14 @@ const Sidebar = (props: SidebarProps) => {
     onClick(!drawerState);
   };
 
+  const switchPrimaryColor = (primary: string, primaryHover: string) => {
+    document.documentElement.style.setProperty("--primary-color", primary);
+    document.documentElement.style.setProperty(
+      "--primary-color-hover",
+      primaryHover
+    );
+  };
+
   return (
     <div className="sidebar">
       <Drawer
@@ -28,15 +36,24 @@ const Sidebar = (props: SidebarProps) => {
           <div className="sidebar__navigation">
             <h2>Themes</h2>
             <ul>
-              <li>
+              <li
+                className="cursor-pointer"
+                onClick={() => switchPrimaryColor("#3d89e9", "#1f7aed")}
+              >
                 <h2>Blue</h2>
                 <span className="sidebar__color-box blue"></span>
               </li>
-              <li>
+              <li
+                className="cursor-pointer"
+                onClick={() => switchPrimaryColor("#23f0dc", "#18d4c2")}
+              >
                 <h2>Green</h2>
                 <span className="sidebar__color-box green"></span>
               </li>
-              <li>
+              <li
+                className="cursor-pointer"
+                onClick={() => switchPrimaryColor("#f1622f", "#ea4e16")}
+              >
                 <h2>Red</h2>
                 <span className="sidebar__color-box red"></span>
               </li>

@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 
 const Home = () => {
   const [drawerState, setDrawerState] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -18,15 +19,23 @@ const Home = () => {
     dispatch(fetchAllCountries() as any);
   }, [dispatch]);
 
+  const handleSearchKeyword = (value: string) => {
+    setSearchKeyword(value);
+  };
+
   const handleDrawerState = (state: boolean) => {
     setDrawerState(state);
   };
   return (
     <div className="home">
-      <Appbar onClick={handleDrawerState} drawerState={drawerState} />
+      <Appbar
+        onClick={handleDrawerState}
+        drawerState={drawerState}
+        handleSearchKeyword={handleSearchKeyword}
+      />
       <Sidebar onClick={handleDrawerState} drawerState={drawerState} />
 
-      <CountryList />
+      <CountryList searchKeyword={searchKeyword} />
     </div>
   );
 };

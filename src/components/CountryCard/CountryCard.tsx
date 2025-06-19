@@ -3,29 +3,36 @@ import { Button } from "@mui/material";
 import "./countrycard.scss";
 
 type CountryCardProps = {
-  alpha2Code: string;
-  name: string;
+  flags: {
+    png: string;
+  };
+  name: {
+    common: string;
+  };
   region: string;
   onClick: Function;
+  disabled: boolean;
 };
 
 const CountryCard = ({
-  alpha2Code,
+  flags,
   name,
   region,
   onClick,
+  disabled,
 }: CountryCardProps) => {
   return (
     <div className="country-card">
       <div className="country-card__wrapper">
-        <img
-          src={`https://flagcdn.com/w320/${alpha2Code.toLowerCase()}.png`}
-          alt={name}
-        />
-        <h2 className="country-card__name">{name}</h2>
+        <img src={flags.png} alt={name.common} />
+        <h2 className="country-card__name">{name.common}</h2>
         <h2 className="country-card__region">{region}</h2>
         <div className="country-card__action">
-          <Button className=" btn btn__primary" onClick={() => onClick()}>
+          <Button
+            disabled={disabled}
+            className=" btn btn__primary"
+            onClick={() => onClick()}
+          >
             Add to cart
           </Button>
         </div>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Dispatch } from "redux";
 
 import { FETCH_COUNTRIES_REQUEST, FETCH_COUNTRIES_SUCCESS, CountryActions, FETCH_COUNTRIES_FAILURE } from "../../types";
@@ -23,17 +24,13 @@ export function fetchAllCountriesFailure(error: string): CountryActions {
 }
 
 export function fetchAllCountries() {
-    return async (dispatch: Dispatch<CountryActions>) => {
-        dispatch(FetchAllCountriesRequest());
-        try {
-            const res = await fetch('./json/countries.json');
-            if (!res.ok) {
-                throw new Error('Failed to load countries.json file');
-            }
-            const countries = await res.json();
+    return (dispatch: Dispatch) => {
+        axios.get('https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital')
+        .then((res) => {
+            const countries = res.data;
             dispatch(fetchAllCountriesSucces(countries));
-        } catch (error) {
-            dispatch(fetchAllCountriesFailure(error instanceof Error ? error.message : 'An unknown error occurred'));
-        }
+        }).catch((err) => {
+            dispatch(fetchAllCountriesFailure(err));
+        });
     }
 }

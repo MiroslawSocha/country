@@ -23,7 +23,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Muli, sans-serif",
+    fontFamily: "Poppins, sans-serif",
     fontWeightBold: 700,
     fontWeightMedium: 600,
     fontWeightRegular: 400,

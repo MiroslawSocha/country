@@ -40,12 +40,9 @@ const CartMenu = ({ cart, onClick, menuOpen, anchorEl }: CartMenuProps) => {
           )}
           {cart &&
             cart.map((country: any) => (
-              <div key={country.name} className="cart-menu__menu-item">
-                <img
-                  src={`https://flagcdn.com/w320/${country.alpha2Code.toLowerCase()}.png`}
-                  alt={country.name}
-                />
-                <h2>{country.name}</h2>
+              <div key={country.name.common} className="cart-menu__menu-item">
+                <img src={country.flags.png} alt={country.name.common} />
+                <h2>{country.name.common}</h2>
                 <DeleteIcon
                   className="cart-menu__delete-icon"
                   onClick={() => dispatch(removeCountryFromCart(country))}

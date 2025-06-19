@@ -2,25 +2,29 @@
 
 .country-card {
     box-shadow: $boxShadow;
-    max-width: 300px;
+    width: 330px;
+    margin-bottom: 3rem;
     &__wrapper {
         padding: 5rem;
-
+        text-align: center;
         img {
             max-width: 250px;
             height: 150px;
+            border: 1px solid $black;
         }
     }
 
     &__name {
         margin-top: 5rem;
         color: $black;
+        text-align: left;
     }
 
     &__region {
         margin-top: 2.5rem;
         margin-bottom: 6.5rem;
         color: $blackLight;
+        text-align: left;
     }
 
     &__action {

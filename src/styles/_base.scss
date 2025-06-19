@@ -8,23 +8,27 @@ $font-weights: (
   bold: 700
 );
 
-$primary: #3d89e9;
-$primaryHover: #1f7aed;
-$black: #15181f;
-$mainWhite: #ffffff;
-$white: #dbffff;
-$gray: #f6f7f9;
-$blackLight: #898b8e;
-$boxShadow: 0px 6px 16px rgba(165, 155, 151, 0.19);
-
 $font-family: "Poppins", sans-serif;
 
-$max-width: 1040px;
 :root {
   font-size: 8px;
   font-weight: weight(regular);
   font-family: $font-family;
+  --primary-color: #3d89e9;
+  --primary-color-hover: #1f7aed;
 }
+
+$primary: var(--primary-color);
+$primaryHover: var(--primary-color-hover);
+$black: #15181f;
+$blackLight: #898b8e;
+$mainWhite: #ffffff;
+$white: #dbffff;
+$gray: #f6f7f9;
+$grayDark: #b8b9bb;
+$boxShadow: 0px 6px 16px rgba(165, 155, 151, 0.19);
+
+$max-width: 1040px;
 
 .container {
   min-width: $max-width;
@@ -33,6 +37,11 @@ $max-width: 1040px;
 
 h2 {
   font-size: 3rem;
+  font-family: $font-family;
+  font-weight: weight(regular);
+}
+p {
+  font-size: 2rem;
   font-family: $font-family;
   font-weight: weight(regular);
 }
@@ -63,6 +72,16 @@ h2 {
   font-family: $font-family !important;
   color: $black !important;
   font-size: 2rem !important;
+}
+
+.MuiButtonBase-root.Mui-disabled {
+  cursor: default;
+  pointer-events: none;
+  background-color: $grayDark !important;
+  color: $gray !important;
+}
+.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.css-15thseo-MuiButtonBase-root-MuiMenuItem-root {
+  font-family: $font-family !important;
 }
 
 @function weight($weight-name) {

@@ -37,9 +37,13 @@
         align-items: center;
         justify-content: center;
         font-size: 2rem;
-        background-color: $primary;
+        background-color: $blackLight;
         color: $white;
         border-radius: 50%;
         margin-left: 2.5rem;
+    }
+
+    .active {
+        background-color: $primary;
     }
 }

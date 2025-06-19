@@ -14,10 +14,11 @@ import { useState } from "react";
 interface AppbarProps {
   onClick: Function;
   drawerState: boolean;
+  handleSearchKeyword: Function;
 }
 
 const Appbar = (props: AppbarProps) => {
-  const { onClick, drawerState } = props;
+  const { onClick, drawerState, handleSearchKeyword } = props;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const menuOpen = Boolean(anchorEl);
   const cart = useSelector((state: AppState) => state.cartReducer.cart);
@@ -44,23 +45,24 @@ const Appbar = (props: AppbarProps) => {
           />
         </div>
         <div className="appbar__content-search">
-          <Search />
+          <Search handleSearchKeyword={handleSearchKeyword} />
         </div>
         <div className="appbar__content-right">
-          <div className="appbar__content-cart">
+          <CartMenu
+            cart={cart}
+            onClick={handleCartMenuClose}
+            menuOpen={menuOpen}
+            anchorEl={anchorEl}
+          />
+          <div className="appbar__content-cart" onClick={handleCartMenuClick}>
             <ShoppingCartIcon className="cursor-pointer" />
             <div
-              className="appbar__content-cart-counter"
-              onClick={handleCartMenuClick}
+              className={`appbar__content-cart-counter cursor-pointer ${
+                cart.length > 0 ? "active" : ""
+              }`}
             >
               {cart && cart.length}
             </div>
-            <CartMenu
-              cart={cart}
-              onClick={handleCartMenuClose}
-              menuOpen={menuOpen}
-              anchorEl={anchorEl}
-            />
           </div>
           <MenuIcon className="cursor-pointer" onClick={onDrawerClick} />
         </div>

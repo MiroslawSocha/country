@@ -9,4 +9,43 @@
         justify-content: space-between;
         flex-wrap: wrap;
     }
+    &__sort {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        p {
+            margin-right: 1rem;
+            font-weight: weight(medium);
+        }
+        #sort-country-select {
+            color: $primary !important;
+            font-weight: weight(medium);
+            &:hover {
+                color: $primaryHover !important;
+            }
+        }
+        svg {
+            color: $primary;
+            font-weight: weight(medium);
+        }
+    }
+    &__pagination {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 3rem 0;
+    }
+    &__pagination-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        * {
+            margin: 0 1rem !important;
+        }
+
+        .btn {
+            width: auto;
+        }
+    }
 }

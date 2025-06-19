@@ -3,11 +3,24 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import "./search.scss";
 
-const Search = () => {
+type SearchProps = {
+  handleSearchKeyword: Function;
+};
+
+const Search = ({ handleSearchKeyword }: SearchProps) => {
+  const handleInputChange = (e: any) => {
+    handleSearchKeyword((e.target as HTMLInputElement).value);
+  };
+
   return (
     <div className="search-box">
       <div className="search-box__wrapper">
-        <Input id="standard-basic" placeholder="Search" disableUnderline />
+        <Input
+          onChange={handleInputChange}
+          id="standard-basic"
+          placeholder="Search"
+          disableUnderline
+        />
         <SearchIcon />
       </div>
     </div>
