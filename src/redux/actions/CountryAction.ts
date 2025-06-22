@@ -25,7 +25,7 @@ export function fetchAllCountriesFailure(error: string): CountryActions {
 
 export function fetchAllCountries() {
     return (dispatch: Dispatch) => {
-        axios.get('https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital')
+        axios.get('https://restcountries.com/v3.1/all?fields=name,capital,region,subregion,flags,population,currencies,languages')
         .then((res) => {
             const countries = res.data;
             dispatch(fetchAllCountriesSucces(countries));

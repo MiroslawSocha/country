@@ -62,6 +62,12 @@ p {
       background-color: $primaryHover !important;
     }
   }
+  &__text {
+    color: $blackLight !important;
+    font-size: 3rem !important;
+    display: flex;
+    align-items: center !important;
+  }
 }
 
 .cursor-pointer {

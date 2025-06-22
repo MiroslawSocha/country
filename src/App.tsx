@@ -1,3 +1,8 @@
+import { useState } from "react";
+
+import Appbar from "./components/Appbar/Appbar";
+import Sidebar from "./components/Sidebar/Sidebar";
+
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -32,9 +37,16 @@ const theme = createTheme({
 });
 
 function App() {
+  const [drawerState, setDrawerState] = useState(false);
+
+  const handleDrawerState = (state: boolean) => {
+    setDrawerState(state);
+  };
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
+        <Appbar onClick={handleDrawerState} drawerState={drawerState} />
+        <Sidebar onClick={handleDrawerState} drawerState={drawerState} />
         <Routes />
       </div>
     </ThemeProvider>

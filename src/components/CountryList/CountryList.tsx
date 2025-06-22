@@ -11,14 +11,10 @@ import {
 import CountryCard from "../CountryCard/CountryCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCountries, addCountryToCart } from "../../redux/actions";
-import { AppState } from "../../types";
+import { AppState, CountryState } from "../../types";
 import "./countrylist.scss";
 
-type CountryListProps = {
-  searchKeyword: string;
-};
-
-const CountryList = ({ searchKeyword }: CountryListProps) => {
+const CountryList = () => {
   const countries = useSelector(
     (state: AppState) => state.countryReducer.countries
   );
@@ -79,8 +75,11 @@ const CountryList = ({ searchKeyword }: CountryListProps) => {
     sortCountries(countries, sortBy);
   }, [countries, sortBy]);
 
+  const searchKeyword = useSelector(
+    (state: AppState) => state.uiReducer.searchKeyword
+  );
   useEffect(() => {
-    const filtered = countries.filter((country: any) =>
+    const filtered = countries.filter((country: CountryState) =>
       country.name.common.toLowerCase().includes(searchKeyword.toLowerCase())
     );
     sortCountries(filtered, sortBy);
@@ -121,7 +120,7 @@ const CountryList = ({ searchKeyword }: CountryListProps) => {
           </Typography>
         )}
         {!isLoading &&
-          paginatedCountries.map((country: any) => (
+          paginatedCountries.map((country) => (
             <CountryCard
               key={country.name.common}
               {...country}
