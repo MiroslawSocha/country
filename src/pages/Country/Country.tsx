@@ -23,6 +23,15 @@ const Country = () => {
   );
 
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    if (currentCountry) {
+      dispatch(addCountryToCart(currentCountry.name.common));
+    }
+  };
+
+  const isInCart = cart.includes(currentCountry?.name.common);
+
   useEffect(() => {
     dispatch(fetchAllCountries() as any);
   }, [dispatch]);
@@ -146,10 +155,10 @@ const Country = () => {
       <div className="country-page__actions">
         <Button
           className=" btn btn__primary"
-          onClick={() => dispatch(addCountryToCart(currentCountry))}
-          disabled={cart.includes(currentCountry)}
+          onClick={handleAddToCart}
+          disabled={isInCart}
         >
-          Add to cart
+          {isInCart ? "In cart" : "Add to cart"}
         </Button>
       </div>
     </div>

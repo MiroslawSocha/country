@@ -13,6 +13,7 @@ type CountryCardProps = {
   region: string;
   onClick: Function;
   disabled: boolean;
+  isInCart: boolean;
 };
 
 const CountryCard = ({
@@ -21,6 +22,7 @@ const CountryCard = ({
   region,
   onClick,
   disabled,
+  isInCart,
 }: CountryCardProps) => {
   return (
     <div className="country-card">
@@ -36,7 +38,7 @@ const CountryCard = ({
             className=" btn btn__primary"
             onClick={() => onClick()}
           >
-            Add to cart
+            {isInCart ? "In cart" : "Add to cart"}
           </Button>
         </div>
       </div>

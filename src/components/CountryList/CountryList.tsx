@@ -123,9 +123,12 @@ const CountryList = () => {
           paginatedCountries.map((country) => (
             <CountryCard
               key={country.name.common}
-              {...country}
-              onClick={() => dispatch(addCountryToCart(country))}
-              disabled={cart.includes(country)}
+              flags={country.flags}
+              name={country.name}
+              region={country.region}
+              onClick={() => dispatch(addCountryToCart(country.name.common))}
+              disabled={cart.includes(country.name.common)}
+              isInCart={cart.includes(country.name.common)}
             />
           ))}
       </div>

@@ -1,9 +1,11 @@
 import { Menu } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { removeCountryFromCart } from "../../redux/actions";
+
+import { AppState } from "../../types";
 
 import "./cartmenu.scss";
 
@@ -16,6 +18,14 @@ type CartMenuProps = {
 
 const CartMenu = ({ cart, onClick, menuOpen, anchorEl }: CartMenuProps) => {
   const dispatch = useDispatch();
+  const countries = useSelector(
+    (state: AppState) => state.countryReducer.countries
+  );
+  const cartCountries = cart
+    .map((countryName) =>
+      countries.find((country) => country.name.common === countryName)
+    )
+    .filter(Boolean);
 
   const handleClose = () => {
     onClick(null);
@@ -38,14 +48,16 @@ const CartMenu = ({ cart, onClick, menuOpen, anchorEl }: CartMenuProps) => {
               <h2>Your cart is empty</h2>
             </div>
           )}
-          {cart &&
-            cart.map((country: any) => (
+          {cartCountries &&
+            cartCountries.map((country: any) => (
               <div key={country.name.common} className="cart-menu__menu-item">
                 <img src={country.flags.png} alt={country.name.common} />
                 <h2>{country.name.common}</h2>
                 <DeleteIcon
                   className="cart-menu__delete-icon"
-                  onClick={() => dispatch(removeCountryFromCart(country))}
+                  onClick={() =>
+                    dispatch(removeCountryFromCart(country.name.common))
+                  }
                 />
               </div>
             ))}
