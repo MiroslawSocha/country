@@ -31,7 +31,7 @@ $boxShadow: 0px 6px 16px rgba(165, 155, 151, 0.19);
 $max-width: 1040px;
 
 .container {
-  min-width: $max-width;
+  max-width: $max-width;
   margin: auto;
 }
 

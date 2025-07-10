@@ -40,27 +40,29 @@ const Appbar = (props: AppbarProps) => {
         <div className="appbar__content-left">
           <img src="../images/country-logo.svg" alt="country api text" />
         </div>
-        <div className="appbar__content-search">
-          <Search />
-        </div>
-        <div className="appbar__content-right">
-          <CartMenu
-            cart={cart}
-            onClick={handleCartMenuClose}
-            menuOpen={menuOpen}
-            anchorEl={anchorEl}
-          />
-          <div className="appbar__content-cart" onClick={handleCartMenuClick}>
-            <ShoppingCartIcon className="cursor-pointer" />
-            <div
-              className={`appbar__content-cart-counter cursor-pointer ${
-                cart.length > 0 ? "active" : ""
-              }`}
-            >
-              {cart && cart.length}
-            </div>
+        <div className="appbar__helped-container">
+          <div className="appbar__content-search">
+            <Search />
           </div>
-          <MenuIcon className="cursor-pointer" onClick={onDrawerClick} />
+          <div className="appbar__content-right">
+            <CartMenu
+              cart={cart}
+              onClick={handleCartMenuClose}
+              menuOpen={menuOpen}
+              anchorEl={anchorEl}
+            />
+            <div className="appbar__content-cart" onClick={handleCartMenuClick}>
+              <ShoppingCartIcon className="cursor-pointer" />
+              <div
+                className={`appbar__content-cart-counter cursor-pointer ${
+                  cart.length > 0 ? "active" : ""
+                }`}
+              >
+                {cart && cart.length}
+              </div>
+            </div>
+            <MenuIcon className="cursor-pointer" onClick={onDrawerClick} />
+          </div>
         </div>
       </div>
     </div>

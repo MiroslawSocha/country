@@ -6,10 +6,12 @@
     height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem 3rem;
     &__wrapper {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         svg {
             font-size: 4rem;
             color: $black;

@@ -48,4 +48,39 @@
             width: auto;
         }
     }
+    @media (max-width: 768px) {
+        &__pagination {
+            gap: 2rem;
+            &-results {
+                display: none;
+            }
+            &-rows-per-page {
+                display: none !important;
+            }
+        }
+
+        &__pagination-controls {
+            width: 100%;
+            gap: 1rem;
+            justify-content: space-around;
+
+            * {
+                margin: 0 !important;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        &__pagination {
+            margin: 2rem 0;
+        }
+
+        &__pagination-controls {
+            gap: 0.75rem;
+
+            .btn {
+                font-size: 0.9rem;
+            }
+        }
+    }
 }

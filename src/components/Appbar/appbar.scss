@@ -1,7 +1,6 @@
 @import "../../styles/base";
 
 .appbar {
-    height: 80px;
     padding-top: 10px;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -17,6 +16,12 @@
             width: auto;
         }
     }
+    &__helped-container {
+        display: flex;
+        align-items: center;
+        gap: 10rem;
+    }
+
     &__content-right {
         display: flex;
         align-items: center;
@@ -45,5 +50,39 @@
 
     .active {
         background-color: $primary;
+    }
+    @media (max-width: 768px) {
+        &__content {
+            flex-direction: column;
+            align-items: stretch;
+
+            &-left {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+
+            &-search {
+                width: 50%;
+                margin-bottom: 0.5rem;
+            }
+
+            &-right {
+                justify-content: center;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__helped-container {
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+    }
+    @media (max-width: 480px) {
+        &__content-search {
+            display: none;
+        }
     }
 }

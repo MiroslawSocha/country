@@ -135,7 +135,10 @@ const CountryList = () => {
 
       {!isLoading && filteredCountries.length > 0 && (
         <Box className="country-list__pagination">
-          <Typography variant="body2">
+          <Typography
+            variant="body2"
+            className="country-list__pagination-results"
+          >
             Results {startIndex}–{endIndex} of {filteredCountries.length}
           </Typography>
 
@@ -161,7 +164,11 @@ const CountryList = () => {
             </Button>
           </Box>
 
-          <FormControl variant="standard" sx={{ minWidth: 120 }}>
+          <FormControl
+            variant="standard"
+            sx={{ minWidth: 120 }}
+            className="country-list__pagination-rows-per-page"
+          >
             <Select<number>
               value={rowsPerPage}
               onChange={handleChangeRowsPerPage}
