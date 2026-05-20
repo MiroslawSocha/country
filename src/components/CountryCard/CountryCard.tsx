@@ -28,7 +28,14 @@ const CountryCard = ({
     <div className="country-card">
       <div className="country-card__wrapper">
         <Link to={`/country/${name.common}`}>
-          <img src={flags.png} alt={name.common} />
+          <img
+            src={
+              name.common === "Afghanistan"
+                ? "https://flagcdn.com/w320/af.png"
+                : flags.png
+            }
+            alt={name.common}
+          />
           <h2 className="country-card__name">{name.common}</h2>
           <h2 className="country-card__region">{region}</h2>
         </Link>
