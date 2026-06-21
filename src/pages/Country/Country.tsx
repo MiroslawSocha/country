@@ -14,12 +14,12 @@ const Country = () => {
   const navigate = useNavigate();
 
   const countries = useSelector(
-    (state: AppState) => state.countryReducer.countries
+    (state: AppState) => state.countryReducer.countries,
   );
   const cart = useSelector((state: AppState) => state.cartReducer.cart);
 
   const [currentCountry, setCurrentCountry] = useState(
-    countries.filter((country) => country.name.common === name)[0]
+    countries.filter((country) => country.name.common === name)[0],
   );
 
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Country = () => {
 
   useEffect(() => {
     setCurrentCountry(
-      countries.filter((country) => country.name.common === name)[0]
+      countries.filter((country) => country.name.common === name)[0],
     );
   }, [countries, name]);
 
@@ -58,7 +58,7 @@ const Country = () => {
         <div className="country-page__details">
           <div className="country-page__details-left">
             <img
-              src={currentCountry.flags.png}
+              src={`https://flagcdn.com/w320/${currentCountry.cca2}.png`}
               alt={currentCountry.name.common}
             />
             <h2 className="country-card__name">{currentCountry.name.common}</h2>
@@ -79,12 +79,6 @@ const Country = () => {
             <div className="country-page__details-right-list">
               <h2>Subregion: </h2>{" "}
               <h2 className="right">{currentCountry.subregion}</h2>
-            </div>
-            <div className="country-page__details-right-list">
-              <h2>Population:</h2>{" "}
-              <h2 className="right">
-                {currentCountry.population.toLocaleString("en")}
-              </h2>
             </div>
             <div className="country-page__details-right-list">
               <h2>Currencies:</h2>{" "}

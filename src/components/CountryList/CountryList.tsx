@@ -16,10 +16,10 @@ import "./countrylist.scss";
 
 const CountryList = () => {
   const countries = useSelector(
-    (state: AppState) => state.countryReducer.countries
+    (state: AppState) => state.countryReducer.countries,
   );
   const isLoading = useSelector(
-    (state: AppState) => state.countryReducer.isLoading
+    (state: AppState) => state.countryReducer.isLoading,
   );
   const cart = useSelector((state: AppState) => state.cartReducer.cart);
 
@@ -76,11 +76,11 @@ const CountryList = () => {
   }, [countries, sortBy]);
 
   const searchKeyword = useSelector(
-    (state: AppState) => state.uiReducer.searchKeyword
+    (state: AppState) => state.uiReducer.searchKeyword,
   );
   useEffect(() => {
     const filtered = countries.filter((country: CountryState) =>
-      country.name.common.toLowerCase().includes(searchKeyword.toLowerCase())
+      country.name.common.toLowerCase().includes(searchKeyword.toLowerCase()),
     );
     sortCountries(filtered, sortBy);
     setPage(0);
@@ -88,7 +88,7 @@ const CountryList = () => {
 
   const paginatedCountries = filteredCountries.slice(
     page * rowsPerPage,
-    page * rowsPerPage + rowsPerPage
+    page * rowsPerPage + rowsPerPage,
   );
 
   const startIndex = page * rowsPerPage + 1;
@@ -123,7 +123,7 @@ const CountryList = () => {
           paginatedCountries.map((country) => (
             <CountryCard
               key={country.name.common}
-              flags={country.flags}
+              cca2={country.cca2}
               name={country.name}
               region={country.region}
               onClick={() => dispatch(addCountryToCart(country.name.common))}

@@ -1,5 +1,6 @@
-import axios from "axios";
 import { Dispatch } from "redux";
+// Importujesz plik JSON bezpośrednio (dostosuj ścieżkę do swojego projektu)
+import countriesData from "./countries.json"; 
 
 import { FETCH_COUNTRIES_REQUEST, FETCH_COUNTRIES_SUCCESS, CountryActions, FETCH_COUNTRIES_FAILURE } from "../../types";
 
@@ -25,12 +26,14 @@ export function fetchAllCountriesFailure(error: string): CountryActions {
 
 export function fetchAllCountries() {
     return (dispatch: Dispatch) => {
-        axios.get('https://restcountries.com/v3.1/all?fields=name,capital,region,subregion,flags,population,currencies,languages')
-        .then((res) => {
-            const countries = res.data;
-            dispatch(fetchAllCountriesSucces(countries));
-        }).catch((err) => {
-            dispatch(fetchAllCountriesFailure(err));
-        });
+        dispatch(FetchAllCountriesRequest());
+        
+        try {
+            // Ponieważ dane są lokalne, przypisujemy je natychmiast bez axiosa
+            const countries = countriesData;
+            dispatch(fetchAllCountriesSucces(countries as []));
+        } catch (err: any) {
+            dispatch(fetchAllCountriesFailure(err.message || "Błąd ładowania danych"));
+        }
     }
 }

@@ -19,11 +19,11 @@ type CartMenuProps = {
 const CartMenu = ({ cart, onClick, menuOpen, anchorEl }: CartMenuProps) => {
   const dispatch = useDispatch();
   const countries = useSelector(
-    (state: AppState) => state.countryReducer.countries
+    (state: AppState) => state.countryReducer.countries,
   );
   const cartCountries = cart
     .map((countryName) =>
-      countries.find((country) => country.name.common === countryName)
+      countries.find((country) => country.name.common === countryName),
     )
     .filter(Boolean);
 
@@ -51,7 +51,10 @@ const CartMenu = ({ cart, onClick, menuOpen, anchorEl }: CartMenuProps) => {
           {cartCountries &&
             cartCountries.map((country: any) => (
               <div key={country.name.common} className="cart-menu__menu-item">
-                <img src={country.flags.png} alt={country.name.common} />
+                <img
+                  src={`https://flagcdn.com/w320/${country.cca2}.png`}
+                  alt={country.name.common}
+                />
                 <h2>{country.name.common}</h2>
                 <DeleteIcon
                   className="cart-menu__delete-icon"

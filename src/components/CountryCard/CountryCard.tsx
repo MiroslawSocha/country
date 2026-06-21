@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import "./countrycard.scss";
 
 type CountryCardProps = {
-  flags: {
-    png: string;
-  };
+  cca2: string;
   name: {
     common: string;
   };
@@ -17,7 +15,7 @@ type CountryCardProps = {
 };
 
 const CountryCard = ({
-  flags,
+  cca2,
   name,
   region,
   onClick,
@@ -28,14 +26,7 @@ const CountryCard = ({
     <div className="country-card">
       <div className="country-card__wrapper">
         <Link to={`/country/${name.common}`}>
-          <img
-            src={
-              name.common === "Afghanistan"
-                ? "https://flagcdn.com/w320/af.png"
-                : flags.png
-            }
-            alt={name.common}
-          />
+          <img src={`https://flagcdn.com/w320/${cca2}.png`} alt={name.common} />
           <h2 className="country-card__name">{name.common}</h2>
           <h2 className="country-card__region">{region}</h2>
         </Link>

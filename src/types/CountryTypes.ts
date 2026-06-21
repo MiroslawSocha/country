@@ -16,9 +16,7 @@ export type CountryState={
     capital: string
     region: string,
     subregion: string
-    flags: {
-        png: string,
-    },
+    cca2: string,
     population: number
     currencies: string[]
     languages: string[]
